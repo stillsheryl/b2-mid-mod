@@ -14,15 +14,22 @@ describe "As a visitor," do
       visit "/parks/#{@park.id}"
 
       expect(page).to have_content(@park.name)
-      expect(page).to have_content(@park.price)
+      expect(page).to have_content("Admissions: $#{@park.price}")
     end
 
     it "shows the names of all the rides that are at that park" do
       visit "/parks/#{@park.id}"
-save_and_open_page
+
+      expect(page).to have_content("Rides:")
       expect(page).to have_content(@thunder_mountain.name)
       expect(page).to have_content(@merry.name)
       expect(page).to have_content(@slide.name)
+    end
+
+    it "shows the average thrill rating of this amusement park’s rides" do
+      visit "/parks/#{@park.id}"
+
+      expect(page).to have_content("Average Thrill Rating of Rides:  #{@park.average_rating}/10")
     end
   end
 end
