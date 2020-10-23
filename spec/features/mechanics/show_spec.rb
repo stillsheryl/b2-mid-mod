@@ -17,8 +17,9 @@ describe "As a user," do
     it "shows their name, years of experience, and names of all rides they’re working on" do
       visit "/mechanics/#{@millie.id}"
 
-      expect(page).to have_content(@millie.name)
-      expect(page).to have_content(@millie.years_of_experience)
+      expect(page).to have_content("Mechanic: #{@millie.name}")
+      expect(page).to have_content("Years of Experience: #{@millie.years_of_experience}")
+      expect(page).to have_content("Current rides they’re working on:")
       expect(page).to have_content(@thunder_mountain.name)
       expect(page).to have_content(@merry.name)
       expect(page).to have_content(@slide.name)
