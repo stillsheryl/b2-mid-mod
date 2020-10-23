@@ -29,7 +29,7 @@ describe "As a visitor," do
     it "shows the average thrill rating of this amusement park’s rides" do
       visit "/parks/#{@park.id}"
 
-      expect(page).to have_content("Average Thrill Rating of Rides:  #{@park.average_rating}/10")
+      expect(page).to have_content("Average Thrill Rating of Rides: #{@park.average_thrill_rating}/10")
     end
   end
 end
