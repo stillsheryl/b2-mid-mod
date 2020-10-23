@@ -8,8 +8,8 @@
 </ul>
 
 <p>Add a ride to workload:</p>
-<%= form_tag '/mechanics', method: :post do %>
-  <%= label_tag :ride_id %>
-  <%= text_field_tag :ride_id %>
+<%= form_tag "/mechanics/#{@mechanic.id}", method: :get do %>
+  <%= label_tag :search, "Ride Id" %>
+  <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Submit" %>
 <% end %>
