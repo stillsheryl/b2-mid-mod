@@ -3,13 +3,13 @@ require 'rails_helper'
 describe "As a user," do
   describe "When I visit a mechanics index page" do
     it "I see a header saying 'All Mechanics' and I see a list of all mechanic’s names and their years of experience" do
-      sam = Mechanic.create!(name: "Sam", years_of_experience: 4)
-      millie = Mechanic.create!(name: "Millie", years_of_experience: 7)
-      luke = Mechanic.create!(name: "Luke", years_of_experience: 2)
-      betty = Mechanic.create!(name: "Betty", years_of_experience: 5)
+      sam = Mechanic.create!(name: "Sam Jones", years_of_experience: 4)
+      millie = Mechanic.create!(name: "Millie Little", years_of_experience: 7)
+      luke = Mechanic.create!(name: "Luke Bartel", years_of_experience: 2)
+      betty = Mechanic.create!(name: "Betty White", years_of_experience: 5)
 
       visit '/mechanics/index'
-
+save_and_open_page
       expect(page).to have_content("All Mechanics")
       expect(page).to have_content(sam.name)
       expect(page).to have_content(sam.years_of_experience)
