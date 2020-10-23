@@ -8,6 +8,7 @@ describe "As a user," do
       @thunder_mountain = @park.rides.create!(name: "Thunder Mountain", thrill_rating: 10)
       @merry = @park.rides.create!(name: "Merry Go Round", thrill_rating: 2)
       @slide = @park.rides.create!(name: "Giant Slide", thrill_rating: 6)
+      @bounce = @park.rides.create!(name: "Bounce House", thrill_rating: 8)
       @millie = Mechanic.create!(name: "Millie Little", years_of_experience: 7)
       MechanicRide.create!(mechanic_id: @millie.id, ride_id: @thunder_mountain.id)
       MechanicRide.create!(mechanic_id: @millie.id, ride_id: @merry.id)
@@ -29,9 +30,16 @@ describe "As a user," do
       visit "/mechanics/#{@millie.id}"
 
       expect(page).to have_content("Add a ride to workload:")
-      expect(page).to have_content("Add a ride to workload:")
-      expect(page).to have_field('ride_id')
+      expect(page).to have_field('Ride Id')
       expect(page).to have_button('Submit')
+    end
+
+    it "shows a form to add a ride to their workload" do
+      visit "/mechanics/#{@millie.id}"
+
+      fill_in('Ride Id', :with => "#{@bounce.id}")
+      click_on("Submit")
+
     end
   end
 end
