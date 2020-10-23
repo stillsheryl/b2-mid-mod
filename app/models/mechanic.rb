@@ -6,4 +6,8 @@ class Mechanic < ApplicationRecord
     id = ride_id.to_i
     MechanicRide.create!(mechanic_id: self.id, ride_id: id)
   end
+
+  def alphaetical_rides
+    self.rides.order(:name)
+  end
 end
