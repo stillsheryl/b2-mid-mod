@@ -16,5 +16,13 @@ describe "As a visitor," do
       expect(page).to have_content(@park.name)
       expect(page).to have_content(@park.price)
     end
+
+    it "shows the names of all the rides that are at that park" do
+      visit "/parks/#{@park.id}"
+
+      expect(page).to have_content(@thunder_mountain.name)
+      expect(page).to have_content(@merry.name)
+      expect(page).to have_content(@slide.name)
+    end
   end
 end
