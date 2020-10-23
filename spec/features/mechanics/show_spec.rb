@@ -24,5 +24,14 @@ describe "As a user," do
       expect(page).to have_content(@merry.name)
       expect(page).to have_content(@slide.name)
     end
+
+    it "shows a form to add a ride to their workload" do
+      visit "/mechanics/#{@millie.id}"
+
+      expect(page).to have_content("Add a ride to workload:")
+      expect(page).to have_content("Add a ride to workload:")
+      expect(page).to have_field('ride_id')
+      expect(page).to have_button('Submit')
+    end
   end
 end
