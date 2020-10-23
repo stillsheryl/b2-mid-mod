@@ -19,7 +19,7 @@ describe "As a visitor," do
 
     it "shows the names of all the rides that are at that park" do
       visit "/parks/#{@park.id}"
-
+save_and_open_page
       expect(page).to have_content(@thunder_mountain.name)
       expect(page).to have_content(@merry.name)
       expect(page).to have_content(@slide.name)
