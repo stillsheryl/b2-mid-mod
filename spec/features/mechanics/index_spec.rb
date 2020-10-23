@@ -9,7 +9,7 @@ describe "As a user," do
       betty = Mechanic.create!(name: "Betty White", years_of_experience: 5)
 
       visit '/mechanics/index'
-save_and_open_page
+
       expect(page).to have_content("All Mechanics")
       expect(page).to have_content(sam.name)
       expect(page).to have_content(sam.years_of_experience)
