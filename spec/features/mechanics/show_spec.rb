@@ -40,6 +40,21 @@ describe "As a user," do
       fill_in('Ride Id', :with => "#{@bounce.id}")
       click_on("Submit")
 
+      expect(page).to have_content("#{@bounce.name}")
+    end
+
+    it "shows rides in alphabetical order" do
+      visit "/mechanics/#{@millie.id}"
+save_and_open_page
+      within all('.rides')[0] do
+        expect(page).to have_content(@merry.name)
+      end
+      within all('.rides')[1] do
+        expect(page).to have_content(@slide.name)
+      end
+      within all('.rides')[2] do
+        expect(page).to have_content(@thunder_mountain.name)
+      end
     end
   end
 end
